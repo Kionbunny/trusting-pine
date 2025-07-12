@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Directory</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Employee Directory</h1>
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search by name or email" />
+      <button id="filterBtn">Filter</button>
+      <select id="sortSelect">
+        <option value="">--Select--</option>
+        <option value="firstName">First Name</option>
+        <option value="department">Department</option>
+      </select>
+      <select id="perPageSelect">
+        <option>10</option>
+        <option>25</option>
+        <option>50</option>
+        <option>100</option>
+      </select>
+      <a href="form.html"><button class="add-btn">Add Employee</button></a>
+    </div>
+  </header>
+
+  <main id="employeeList">
+    <#assign employees = [
+      {"id": 1, "firstName": "Alice", "lastName": "Smith", "email": "alice@example.com", "department": "HR", "role": "Manager"},
+      {"id": 2, "firstName": "Bob", "lastName": "Johnson", "email": "bob@example.com", "department": "IT", "role": "Developer"},
+      {"id": 3, "firstName": "Charlie", "lastName": "Lee", "email": "charlie@example.com", "department": "Finance", "role": "Analyst"}
+    ]>
+
+    <div class="employee-container">
+      <#list employees as emp>
+        <div class="employee-card" data-id="${emp.id}">
+          <strong>${emp.firstName} ${emp.lastName}</strong>
+          <p><b>Email:</b> ${emp.email}</p>
+          <p><b>Department:</b> ${emp.department}</p>
+          <p><b>Role:</b> ${emp.role}</p>
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+      </#list>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Employee Directory App. All rights reserved.</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
